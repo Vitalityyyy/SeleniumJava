@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -51,17 +52,20 @@ public class BusinessTripCreationPage extends BasePage {
     private WebElement errorMessage;
 
 
+    @Step("Проверить заголовок")
     public BusinessTripCreationPage assertBusinessTripCreationPageHeader() {
         Assertions.assertTrue(createBusinessTripHeader.isDisplayed(), "Заголовок 'Создать командировку' не отображается");
         return this;
     }
 
+    @Step("Выбратть отдел")
     public BusinessTripCreationPage selectDepartment() {
         departmentDropdown.click();
         click(departmentOption);
         return this;
     }
 
+    @Step("Выбрать компанию")
     public BusinessTripCreationPage selectCompany() {
         click(openCompanyListButton);
         companyList.click();
@@ -70,32 +74,38 @@ public class BusinessTripCreationPage extends BasePage {
         return this;
     }
 
+    @Step("Нажать чекбокс")
     public BusinessTripCreationPage clickTicketsOrderCheckbox() {
         click(ticketsOrderCheckbox);
         return this;
     }
 
+    @Step("Заполнить город отправления")
     public BusinessTripCreationPage fillDepartureCity(String city) {
         fillInputField(departureCity, city);
         return this;
     }
 
+    @Step("Заполнить город прибытия")
     public BusinessTripCreationPage fillArrivalCity(String city) {
         fillInputField(arrivalCity, city);
         return this;
     }
 
+    @Step("Заполнить дату отправления")
     public BusinessTripCreationPage fillDepartureDate(String date) {
         fillDateField(departureDate, date);
         return this;
     }
 
+    @Step("Заполнить дату прибытия")
     public BusinessTripCreationPage fillReturnDate(String date) {
         fillDateField(returnDate, date);
         returnDate.sendKeys(Keys.TAB);
         return this;
     }
 
+    @Step("Проверить заполнение полей")
     public BusinessTripCreationPage assertFieldsFilled() {
         scrollToElementJs(departmentDropdown);
         Assertions.assertEquals(departmentDropdown.findElement(By.cssSelector("span")).getText(), "Администрация");
@@ -109,11 +119,13 @@ public class BusinessTripCreationPage extends BasePage {
         return this;
     }
 
+    @Step("Нажать Сохранить и выйти")
     public BusinessTripCreationPage clickSaveAndClose() {
         click(saveAndCloseButton);
         return this;
     }
 
+    @Step("Проверить ошибку валидации")
     public BusinessTripCreationPage assertErrorMessage() {
         Assertions.assertTrue(errorMessage.isDisplayed());
         return this;

@@ -5,13 +5,18 @@ import org.example.managers.DriverManager;
 import org.example.managers.InitManager;
 import org.example.managers.PageManager;
 import org.example.managers.TestPropManager;
+import org.example.utils.AllureTestWatcher;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import static org.example.utils.PropConst.BASE_URL;
 
 public class BaseTest {
+
+    @RegisterExtension
+    AllureTestWatcher watcher = new AllureTestWatcher();
 
     /**
      * Менеджер страничек

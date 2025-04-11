@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -20,6 +21,7 @@ public class AuthPage extends BasePage {
     @FindBy(name = "_submit")
     private WebElement submitButton;
 
+    @Step("Логин")
     public MenuBlock login() {
         waitTillVisible(loginHeader);
         fillInputField(usernameField, props.getProperty(USERNAME));
