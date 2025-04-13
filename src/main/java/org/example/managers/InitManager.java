@@ -2,8 +2,7 @@ package org.example.managers;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.example.utils.PropConst.IMPLICITLY_WAIT;
-import static org.example.utils.PropConst.PAGE_LOAD_TIMEOUT;
+import static org.example.utils.PropConst.*;
 
 /**
  * Класс для инициализации фреймворка
@@ -35,6 +34,7 @@ public class InitManager {
         driverManager.getDriver().manage().window().maximize();
         driverManager.getDriver().manage().timeouts().implicitlyWait(Integer.parseInt(props.getProperty(IMPLICITLY_WAIT)), TimeUnit.SECONDS);
         driverManager.getDriver().manage().timeouts().pageLoadTimeout(Integer.parseInt(props.getProperty(PAGE_LOAD_TIMEOUT)), TimeUnit.SECONDS);
+        driverManager.getDriver().get(TestPropManager.getTestPropManager().getProperty(BASE_URL));
     }
 
     /**
